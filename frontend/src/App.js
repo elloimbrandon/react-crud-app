@@ -104,13 +104,17 @@ const App = () => {
     <>
       <div className="new-movie-form-div">
         <h3 className="new-moive-text">Create New Movie</h3>
-        <form onSubmit={handleNewMovieFormSubmit}>
-            Name: <input type="text" onChange={handleNewNameChange} required/><br/>
-            Released: <input type="text" onChange={handleNewReleaseChange} required/><br/>
-            Genre: <input type="text" onChange={handleNewGenreChange} required/><br/>
-            Image: <input type="text" onChange={handleNewImageChange} required/><br/>
-            <input type="submit" value="Create Movie"/>
-        </form>
+        <div className="new-movie-form-input-div">
+          <form onSubmit={handleNewMovieFormSubmit}>
+              Name: <input type="text" onChange={handleNewNameChange} required/><br/>
+              Released: <input type="text" onChange={handleNewReleaseChange} required/><br/>
+              Genre: <input type="text" onChange={handleNewGenreChange} required/><br/>
+              Image: <input type="text" onChange={handleNewImageChange} required/><br/>
+              <div className="create-movie-btn-div">
+                <input type="submit" value="Create Movie"/>
+              </div>
+          </form>
+        </div>
       </div>
       <h1 className="movies-text">Movies</h1>
       <div className="movies-flexbox">
@@ -142,10 +146,10 @@ const App = () => {
                   <div className="edit-movie-form-div" key={movie._id}>
                     <h3 className="edit-moive-text">Edit {movie.name}</h3>
                     <form onSubmit={(event) => handleEditForm(event, movie)}>
-                        Name: <input type="text" placeholder={movie.name} onChange={handleNewNameChange} required/><br/>
-                        Released: <input type="text" placeholder={movie.release} onChange={handleNewReleaseChange} required/><br/>
-                        Genre: <input type="text" placeholder={movie.genre} onChange={handleNewGenreChange} required/><br/>
-                        Image: <input type="text" placeholder={movie.image} onChange={handleNewImageChange} required/><br/>
+                        Name: <input type="text" placeholder={movie.name} onChange={handleNewNameChange} className="edit-text" required/><br/>
+                        Released: <input type="text" placeholder={movie.release} onChange={handleNewReleaseChange} className="edit-text" required/><br/>
+                        Genre: <input type="text" placeholder={movie.genre} onChange={handleNewGenreChange}className="edit-text" required/><br/>
+                        Image: <input type="text" placeholder={movie.image} onChange={handleNewImageChange} className="edit-text" required/><br/>
                         <input type="submit" value="Submit"/>
                     </form>
                   </div>
