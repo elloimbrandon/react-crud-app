@@ -4,12 +4,13 @@ import axios from 'axios';
 
 
 const App = () => {
-  const [newName, setNewName] = useState("")
-  const [newRelease, setNewRelease] = useState("")
-  const [newImage, setNewImage] = useState("")
-  const [newGenre, setNewGenre] = useState("")
+  const [newName, setNewName] = useState()
+  const [newRelease, setNewRelease] = useState()
+  const [newImage, setNewImage] = useState()
+  const [newGenre, setNewGenre] = useState()
   const [movies, setMovies] = useState([])
   const [editForm, setEditForm] = useState(false)
+  const [editItem, setEditItem] = useState()
 
 
   const handleNewNameChange = (event) => {
@@ -38,6 +39,7 @@ const App = () => {
       .then((response)=>{
         //console.log(response);
         setMovies(response.data)
+        setEditItem(response.data._id)
       })
   },[])
 
@@ -74,6 +76,9 @@ const App = () => {
   }
 
   const showEditForm = () => {
+    // if (movieId === editItem ) {
+    //   setEditForm(true)
+    // }
     setEditForm(true)
   }
 
@@ -101,13 +106,13 @@ const App = () => {
 
   return (
     <>
-      <div classNmae="new-movie-form-div">
-        <h3 classNmae="new-moive-text">Create New Movie</h3>
+      <div className="new-movie-form-div">
+        <h3 className="new-moive-text">Create New Movie</h3>
         <form onSubmit={handleNewMovieFormSubmit}>
-            Name: <input type="text" onChange={handleNewNameChange}/><br/>
-            Released: <input type="text" onChange={handleNewReleaseChange}/><br/>
-            Genre: <input type="text" onChange={handleNewGenreChange}/><br/>
-            Image: <input type="text" onChange={handleNewImageChange}/><br/>
+            Name: <input type="text" onChange={handleNewNameChange} required/><br/>
+            Released: <input type="text" onChange={handleNewReleaseChange} required/><br/>
+            Genre: <input type="text" onChange={handleNewGenreChange} required/><br/>
+            Image: <input type="text" onChange={handleNewImageChange} required/><br/>
             <input type="submit" value="Create Movie"/>
         </form>
       </div>
@@ -118,22 +123,33 @@ const App = () => {
           return (
             <>
               <div key={movie._id} className="movie-card">
-                <div classNane="movie-image-div">
+                <div className="movie-image-div">
                   <img src={movie.image} alt=""/>
                 </div>
                 <h4 className="movie-name">{movie.name}</h4>
-                <p className="movie-release">{movie.release}</p>
-                <p className="movie-genre">{movie.genre}</p>
+                <p className="movie-release">Released: {movie.release}</p>
+                <p className="movie-genre">Genre: {movie.genre}</p>
+                <div className="animalBtnsDiv">
+                  <button
+                    onClick={(event) => {
+                      handleDelete(movie)
+                    }} className="delete-btn">
+                    Delete
+                  </button>
+                  <button onClick={showEditForm} className="edit-Btn">
+                    Edit
+                  </button>
+                </div>
               </div>
               {(editForm) ?
-                <div classNmae="edit-movie-form-div">
-                  <h3 classNmae="edit-moive-text">Edit {movie.name}</h3>
-                  <form onSubmit={handleNewMovieFormSubmit}>
-                      Name: <input type="text" defaultValue={movie.name} onChange={handleNewNameChange}/><br/>
-                      Released: <input type="text" defaultValue={movie.release} onChange={handleNewReleaseChange}/><br/>
-                      Genre: <input type="text" defaultValue={movie.genre} onChange={handleNewGenreChange}/><br/>
-                      Image: <input type="text" defaultValue={movie.image} onChange={handleNewImageChange}/><br/>
-                      <input type="submit" value="Create Movie"/>
+                <div className="edit-movie-form-div">
+                  <h3 className="edit-moive-text">Edit {movie.name}</h3>
+                  <form onSubmit={(event) => handleEditForm(event, movie)} key={movie._id}>
+                      Name: <input type="text" defaultValue={movie.name} onChange={handleNewNameChange} required/><br/>
+                      Released: <input type="text" defaultValue={movie.release} onChange={handleNewReleaseChange} required/><br/>
+                      Genre: <input type="text" defaultValue={movie.genre} onChange={handleNewGenreChange} required/><br/>
+                      Image: <input type="text" defaultValue={movie.image} onChange={handleNewImageChange} required/><br/>
+                      <input type="submit" value="Submit"/>
                   </form>
                 </div>
               : null}
