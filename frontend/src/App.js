@@ -138,7 +138,6 @@ const App = () => {
                     Edit
                   </button>
                 </div>
-              </div>
               {(editForm) ?
                   <div className="edit-movie-form-div" key={movie._id}>
                     <h3 className="edit-moive-text">Edit {movie.name}</h3>
@@ -151,6 +150,7 @@ const App = () => {
                     </form>
                   </div>
               : null}
+              </div>
             </>
           )
         })
@@ -161,11 +161,6 @@ const App = () => {
 }
 
 export default App;
-
-
-
-
-
 
 
 //========== Graveyard ==========//

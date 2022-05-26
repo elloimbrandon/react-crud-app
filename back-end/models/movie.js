@@ -6,6 +6,7 @@ const movieSchema = new mongoose.Schema(
     release: String,
     image: String,
     genre: String,
+    editForm: Boolean
   },
   { timestamps: true }
 );
