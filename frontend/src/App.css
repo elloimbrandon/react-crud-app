@@ -1,3 +1,21 @@
 .App {
   text-align: center;
 }
+
+.movie-card {
+  text-align: center;
+  padding: 7px;
+  margin: 4px;
+  border-radius: 15px;
+  border: thin solid black;
+  width: 250px;
+}
+
+.movie-image-div {
+  max-height: 66%;
+}
+
+.movie-image-div img {
+  height: 100%;
+  max-width: 100%;
+}
