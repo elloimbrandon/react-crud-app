@@ -1,8 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Patrick Hand', cursive;
+}
+
+
 .App {
   text-align: center;
 }
 
+body {
+  background-color: #64C4E6;
+}
+
+.new-movie-form-div {
+  text-align: center;
+}
+
+.new-movie-form-input-div {
+  background: rgba(57, 228, 6, 0.59);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(57, 228, 6, 0.89);
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: right;
+  border-radius: 15px;
+  border: thin solid black;
+}
+
+.new-movie-form-input-div input {
+  margin: 7px 10px;
+}
+
+.create-movie-btn-div {
+  text-align: center;
+}
+
+.new-movie-text {
+  margin: 2px;
+}
+
+.movies-text {
+  text-align: center;
+}
+
+.movies-flexbox {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
 .movie-card {
+  background: rgba(57, 228, 6, 0.59);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(57, 228, 6, 0.89);
   text-align: center;
   padding: 7px;
   margin: 4px;
@@ -15,7 +75,17 @@
   max-height: 66%;
 }
 
+.movie-name {
+  margin-top: 30px;
+}
+
 .movie-image-div img {
   height: 100%;
   max-width: 100%;
+  border-radius: 4px; 
+}
+
+.edit-text::placeholder {
+  opacity: 1;
+  color: black;
 }
